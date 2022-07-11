@@ -1,20 +1,60 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.util.List;
 
 public class FirstClass {
     WebDriver wd;
 
-    @Test
-    public void  preCondition(){
-        WebDriverManager.chromedriver().setup();
+    @BeforeMethod
+    public void preCondition(){
         wd = new ChromeDriver();
 //        wd.get("");
         wd.navigate().to("https://contacts-app.tobbymarshall815.vercel.app/home");
 //        wd.navigate().forward();
 //        wd.navigate().back();
 //        wd.navigate().refresh();
+
+    }
+    @Test
+    public void  test1() {
+        WebElement element = wd.findElement(By.tagName("a"));
+        List<WebElement> elements = wd.findElements(By.tagName("div"));
+        System.out.println(elements.size());
+//        strategies
+        element = wd.findElement(By.linkText("ABOUT")); // old school
+        element = wd.findElement(By.partialLinkText("ABO")); // old school
+        element = wd.findElement(By.id("root"));
+        element = wd.findElement(By.className("container"));
+
+        //cssSelector
+          // by tagName
+        element = wd.findElement(By.cssSelector("div"));
+          // by classname
+        element = wd.findElement(By.cssSelector(".container"));
+          // by ID
+        element = wd.findElement(By.cssSelector("#root"));
+          // by attribute
+        element = wd.findElement(By.cssSelector("[placeholder='Email']"));
+          // by attribute stars with
+        element = wd.findElement(By.cssSelector("[href^='Ho']"));
+          // // by attribute ends with
+        element = wd.findElement(By.cssSelector("[href$='out']"));
+          // by attribute contains
+        element = wd.findElement(By.cssSelector("[href*='ogi']"));
+
+
+    }
+    @AfterMethod
+    public void postCondition(){
+//       wd.close();
+        wd.quit();
+
     }
 
 }
