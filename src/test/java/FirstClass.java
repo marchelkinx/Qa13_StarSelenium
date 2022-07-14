@@ -48,6 +48,23 @@ public class FirstClass {
           // by attribute contains
         element = wd.findElement(By.cssSelector("[href*='ogi']"));
 
+        // xPath selectors
+          // by tagName
+        element = wd.findElement(By.xpath("//div"));
+          // by classname
+        element = wd.findElement(By.xpath("//*[@class='container']"));
+          // by ID
+        element = wd.findElement(By.xpath("//*[@id='root']"));
+          // by attribute
+        element = wd.findElement(By.xpath("//*[@placeholder='Email']"));
+          // by attribute stars with
+        element = wd.findElement(By.xpath("//*[starts-with(@href,'/Ho')]"));
+          // // by attribute ends with - unavailable
+//        element = wd.findElement(By.cssSelector("[href$='out']"));
+          // by attribute contains
+        element = wd.findElement(By.xpath("//*[ends-with(@href,'/ogi')]"));
+
+
 
     }
     @AfterMethod
