@@ -62,7 +62,7 @@ public class FirstClass {
           // // by attribute ends with - unavailable
 //        element = wd.findElement(By.cssSelector("[href$='out']"));
           // by attribute contains
-        element = wd.findElement(By.xpath("//*[ends-with(@href,'/ogi')]"));
+        element = wd.findElement(By.xpath("//*[contains(@href,'/ogi')]"));
 
 
 
